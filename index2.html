@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دانلود آهنگ جدید | Music Download</title>
+  <style>
+    :root{--bg:#0b0f19;--bg2:#11182a;--card:rgba(255,255,255,.06);--card2:rgba(255,255,255,.09);--text:#f4f7ff;--muted:#aab3cc;--line:rgba(255,255,255,.1);--pri:#7c5cff;--pri2:#25d3ff;--good:#1dd1a1;--warn:#ffb84d;--shadow:0 18px 50px rgba(0,0,0,.35);--r:22px}
+    [data-theme="light"]{--bg:#f5f7ff;--bg2:#e9eeff;--card:rgba(255,255,255,.72);--card2:rgba(255,255,255,.9);--text:#151a2a;--muted:#5d667f;--line:rgba(21,26,42,.08);--shadow:0 18px 40px rgba(22,30,55,.12)}
+    *{box-sizing:border-box} html,body{margin:0;height:100%;font-family:tahoma,arial,sans-serif;background:radial-gradient(circle at top,var(--bg2),var(--bg));color:var(--text);overflow-x:hidden}
+    a{text-decoration:none;color:inherit} button,input{font:inherit} .wrap{max-width:1320px;margin:auto;padding:22px}
+    .glass{background:var(--card);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r)}
+    .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:16px 18px;position:sticky;top:14px;z-index:20}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:44px;height:44px;border-radius:16px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;font-size:20px;box-shadow:0 12px 25px rgba(124,92,255,.35)}
+    .nav{display:flex;gap:10px;flex-wrap:wrap}.nav a,.chip,.btn{padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card2);color:var(--text);transition:.2s ease;cursor:pointer}
+    .nav a:hover,.chip:hover,.btn:hover{transform:translateY(-2px);border-color:rgba(124,92,255,.45)}
+    .searchbar{display:flex;gap:10px;align-items:center;margin:18px 0 0;padding:14px}.searchbar input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:16px}.searchbar input::placeholder{color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1.35fr .85fr;gap:18px;margin-top:18px}.hero .big{padding:28px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,rgba(124,92,255,.20),rgba(37,211,255,.12)),var(--card)}
+    .badge{display:inline-flex;width:max-content;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--muted);font-size:13px}
+    h1{margin:14px 0 10px;font-size:clamp(28px,4vw,54px);line-height:1.08}.sub{color:var(--muted);max-width:640px;line-height:1.9}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn.primary{background:linear-gradient(135deg,var(--pri),var(--pri2));border:0;color:#fff;font-weight:700}
+    .side{padding:18px;display:grid;gap:14px}.mini{padding:14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+    .section{display:flex;align-items:center;justify-content:space-between;margin:24px 0 12px;gap:12px}.section h2{margin:0;font-size:20px}.filters{display:flex;gap:10px;flex-wrap:wrap}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{padding:14px;overflow:hidden;position:relative}
+    .cover{aspect-ratio:1;border-radius:18px;background:linear-gradient(135deg,#2b3351,#111827);display:flex;align-items:end;justify-content:space-between;padding:14px;position:relative;overflow:hidden}
+    .cover::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(255,255,255,.25),transparent 35%),radial-gradient(circle at bottom right,rgba(37,211,255,.22),transparent 28%)}
+    .cover span{position:relative;z-index:1;font-weight:800}.song{margin-top:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.song h3{margin:0 0 6px;font-size:16px}.meta{color:var(--muted);font-size:13px;line-height:1.7}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions .btn{padding:9px 12px;border-radius:12px;font-size:13px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,.14);border:1px solid rgba(124,92,255,.25);color:#cbbdff}
+    .trend-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trend{padding:16px;display:flex;align-items:center;gap:14px}.num{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800}
+    .player{position:fixed;left:16px;right:16px;bottom:16px;padding:14px 16px;display:grid;grid-template-columns:1.2fr 1fr .9fr;gap:14px;align-items:center;z-index:30}
+    .now{display:flex;align-items:center;gap:12px}.art{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--pri),#ff7ad9)} .range{width:100%} input[type=range]{accent-color:var(--pri)}
+    .ctrls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.pill{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card2);cursor:pointer}
+    .progress{display:flex;flex-direction:column;gap:8px}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+    .empty{padding:24px;text-align:center;color:var(--muted);grid-column:1/-1}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.trend-row{grid-template-columns:1fr}}
+    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.player{grid-template-columns:1fr;gap:10px}.wrap{padding:14px}.topbar{top:8px}.searchbar{flex-wrap:wrap}.searchbar input{width:100%}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}.nav{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar glass">
+      <div class="brand"><div class="logo">♪</div><div><div style="font-size:15px">MusicHub</div><div style="font-size:12px;color:var(--muted)">دانلود و پخش آهنگ جدید</div></div></div>
+      <nav class="nav">
+        <a href="#">صفحه اصلی</a><a href="#">جدیدترین‌ها</a><a href="#">پرطرفدارها</a><a href="#">آلبوم‌ها</a><a href="#">پلی‌لیست</a>
+      </nav>
+      <button class="btn" id="themeBtn">تم</button>
+    </header>
+
+    <div class="searchbar glass">
+      <input id="search" type="text" placeholder="جستجو: نام آهنگ، خواننده، آلبوم..." />
+      <button class="btn primary">جستجو</button>
+    </div>
+
+    <section class="hero">
+      <div class="big glass">
+        <div>
+          <div class="badge">🔥 ترند امروز • دانلود مستقیم • کیفیت بالا</div>
+          <h1>دانلود آهنگ‌های جدید با ظاهری مدرن، سریع و حرفه‌ای</h1>
+          <p class="sub">یک قالب تک‌فایلی برای سایت دانلود موزیک با حس‌وحال سایت‌های محبوب: کارت‌های شیک، پلی‌یر ثابت، فیلترهای کاربردی و طراحی glassmorphism.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn primary">شروع دانلود</button>
+          <button class="btn">مشاهده ترندها</button>
+          <button class="btn">دانلود آلبوم‌ها</button>
+        </div>
+      </div>
+      <aside class="side glass">
+        <div class="mini"><strong>ویژگی‌ها</strong><div class="meta">تم تیره/روشن، جستجوی زنده، کارت‌های responsive، دکمه دانلود، پلی‌یر پایین صفحه</div></div>
+        <div class="mini"><strong>کیفیت‌ها</strong><div class="meta">MP3 320 • MP3 128 • FLAC • نسخه رینگتون</div></div>
+        <div class="mini"><strong>وضعیت</strong><div class="meta">بروزرسانی روزانه، مناسب سایت‌های دانلود آهنگ ایرانی</div></div>
+      </aside>
+    </section>
+
+    <div class="section">
+      <h2>فیلترها</h2>
+      <div class="filters">
+        <button class="chip">همه</button><button class="chip">جدید</button><button class="chip">شاد</button><button class="chip">غمگین</button><button class="chip">رپ</button><button class="chip">پاپ</button>
+      </div>
+    </div>
+
+    <section class="grid" id="songs">
+      <article class="card glass song-item" data-title="آهنگ جدید 1 خواننده الف">
+        <div class="cover"><span>2026</span><span class="tag">MP3 320</span></div>
+        <div class="song"><div><h3>آهنگ جدید 1</h3><div class="meta">خواننده الف • 3:24 • 8.2MB</div></div><div class="tag">ترند</div></div>
+        <div class="actions"><button class="btn primary">پخش</button><button class="btn">دانلود</button></div>
+      </article>
+      <article class="card glass song-item" data-title="آهنگ احساسی 2 خواننده ب">
+        <div class="cover"><span>HOT</span><span class="tag">FLAC</span></div>
+        <div class="song"><div><h3>آهنگ احساسی 2</h3><div class="meta">خواننده ب • 4:02 • 24.6MB</div></div><div class="tag">جدید</div></div>
+        <div class="actions"><button class="btn primary">پخش</button><button class="btn">دانلود</button></div>
+      </article>
+      <article class="card glass song-item" data-title="آهنگ شاد 3 خواننده ج">
+        <div class="cover"><span>TOP</span><span class="tag">128K</span></div>
+        <div class="song"><div><h3>آهنگ شاد 3</h3><div class="meta">خواننده ج • 2:58 • 5.1MB</div></div><div class="tag">پربازدید</div></div>
+        <div class="actions"><button class="btn primary">پخش</button><button class="btn">دانلود</button></div>
+      </article>
+      <article class="card glass song-item" data-title="آهنگ رپ 4 خواننده د">
+        <div class="cover"><span>NEW</span><span class="tag">HQ</span></div>
+        <div class="song"><div><h3>آهنگ رپ 4</h3><div class="meta">خواننده د • 3:37 • 9.4MB</div></div><div class="tag">ویژه</div></div>
+        <div class="actions"><button class="btn primary">پخش</button><button class="btn">دانلود</button></div>
+      </article>
+    </section>
+
+    <div class="section">
+      <h2>پرطرفدارها</h2><span class="meta">الهام گرفته از صفحات ترند سایت‌های موزیک</span>
+    </div>
+    <section class="trend-row">
+      <div class="trend glass"><div class="num">1</div><div><strong>آهنگ ترند 1</strong><div class="meta">دانلود بالا • بروزرسانی امروز</div></div></div>
+      <div class="trend glass"><div class="num">2</div><div><strong>آهنگ ترند 2</strong><div class="meta">کیفیت عالی • شنونده زیاد</div></div></div>
+      <div class="trend glass"><div class="num">3</div><div><strong>آهنگ ترند 3</strong><div class="meta">پیشنهاد ویژه • محبوب کاربران</div></div></div>
+    </section>
+  </div>
+
+  <footer class="player glass">
+    <div class="now"><div class="art"></div><div><div style="font-weight:700">در حال پخش: آهنگ نمونه</div><div class="meta">خواننده • موزیک پلیر پایین صفحه</div></div></div>
+    <div class="ctrls"><button class="pill">⟲</button><button class="pill">⏮</button><button class="pill">▶</button><button class="pill">⏭</button><button class="pill">⟳</button></div>
+    <div class="progress"><input class="range" type="range" min="0" max="100" value="35" /><div class="time"><span>01:12</span><span>03:24</span></div></div>
+  </footer>
+
+  <script>
+    const d=document.documentElement,b=document.getElementById('themeBtn'),s=document.getElementById('search'),items=[...document.querySelectorAll('.song-item')];
+    b.onclick=()=>{const t=d.getAttribute('data-theme')==='light'?'dark':'light';d.setAttribute('data-theme',t);localStorage.theme=t}
+    if(localStorage.theme)d.setAttribute('data-theme',localStorage.theme)
+    s.oninput=()=>{const q=s.value.trim().toLowerCase();items.forEach(i=>i.style.display=!q||i.dataset.title.includes(q)?'':'none')}
+  </script>
+</body>
+</html>
