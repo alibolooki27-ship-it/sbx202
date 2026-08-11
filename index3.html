@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="نمونه رابط کاربری یک پلتفرم قانونی برای کشف و دریافت موسیقی مستقل">
+  <title>نوا | کشف موسیقی مستقل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b14;
+      --panel: #121522;
+      --panel-2: #181c2c;
+      --line: rgba(255, 255, 255, .09);
+      --text: #f7f7fb;
+      --muted: #a9adbd;
+      --purple: #8b5cf6;
+      --pink: #f472b6;
+      --aqua: #2dd4bf;
+      --yellow: #fbbf24;
+      --shadow: 0 18px 52px rgba(0, 0, 0, .34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 7% 0%, rgba(139, 92, 246, .20), transparent 25rem),
+        radial-gradient(circle at 92% 15%, rgba(45, 212, 191, .12), transparent 23rem),
+        var(--bg);
+      padding-bottom: 104px;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: auto; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 11, 20, .78);
+      backdrop-filter: blur(18px);
+    }
+    .topbar__inner { height: 78px; display: flex; align-items: center; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; font-size: 23px; font-weight: 800; letter-spacing: -.8px; }
+    .brand__mark { width: 34px; height: 34px; display: grid; place-items: center; color: #110b20; background: linear-gradient(135deg, var(--pink), var(--purple) 50%, var(--aqua)); border-radius: 12px 12px 5px 12px; box-shadow: 0 7px 20px rgba(139, 92, 246, .42); }
+    .brand__mark svg { width: 19px; height: 19px; }
+    .nav { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 14px; font-weight: 500; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover, .nav a.active { color: var(--text); }
+    .nav .active { position: relative; }
+    .nav .active::after { content: ""; position: absolute; right: 0; left: 0; bottom: -9px; height: 2px; border-radius: 3px; background: var(--pink); }
+    .header-actions { display: flex; gap: 10px; align-items: center; margin-inline-start: auto; }
+    .icon-button, .menu-button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 12px; color: var(--text); background: rgba(255,255,255,.035); transition: transform .2s, background .2s; }
+    .icon-button:hover, .menu-button:hover { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+    .icon-button svg, .menu-button svg { width: 18px; height: 18px; }
+    .user { padding: 7px 11px 7px 8px; display: flex; gap: 8px; align-items: center; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.035); color: var(--muted); font-size: 12px; }
+    .avatar { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 9px; color: #fff; font-size: 11px; font-weight: 700; background: linear-gradient(135deg, #f59e0b, #ef4444); }
+    .menu-button { display: none; }
+
+    .hero { padding: 50px 0 28px; display: grid; grid-template-columns: 1.35fr .8fr; gap: 32px; align-items: stretch; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid rgba(244, 114, 182, .26); border-radius: 99px; background: rgba(244, 114, 182, .08); color: #f9a8d4; font-size: 12px; font-weight: 600; }
+    .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 5px rgba(244, 114, 182, .16); }
+    h1 { max-width: 690px; margin: 18px 0 14px; font-size: clamp(31px, 4vw, 52px); line-height: 1.28; letter-spacing: -1.7px; }
+    h1 strong { color: #d8c5ff; font-weight: 800; }
+    .hero p { max-width: 605px; margin: 0; color: var(--muted); line-height: 2; font-size: 15px; }
+    .search-wrap { max-width: 630px; margin-top: 28px; display: flex; align-items: center; gap: 10px; padding: 7px 7px 7px 15px; border: 1px solid rgba(255,255,255,.1); border-radius: 18px; background: rgba(18,21,34,.85); box-shadow: var(--shadow); }
+    .search-wrap:focus-within { border-color: rgba(139, 92, 246, .65); box-shadow: 0 0 0 4px rgba(139, 92, 246, .11), var(--shadow); }
+    .search-icon { width: 20px; flex: 0 0 20px; color: #8f93a6; }
+    .search-wrap input { width: 100%; border: 0; outline: 0; color: var(--text); background: transparent; font-size: 14px; }
+    .search-wrap input::placeholder { color: #7c8195; }
+    .kbd { padding: 3px 7px; border: 1px solid var(--line); border-bottom-color: rgba(255,255,255,.18); border-radius: 6px; color: #9298aa; direction: ltr; font-family: Arial, sans-serif; font-size: 11px; white-space: nowrap; }
+    .hero-note { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; color: #9298a9; font-size: 12px; }
+    .hero-note span { display: inline-flex; align-items: center; gap: 5px; }
+    .hero-note svg { width: 15px; height: 15px; color: var(--aqua); }
+
+    .featured {
+      position: relative; isolation: isolate; overflow: hidden; min-height: 320px; padding: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 26px; background: linear-gradient(145deg, rgba(74, 37, 129, .98), #18112c 58%, #111827); box-shadow: var(--shadow); }
+    .featured::before { content: ""; position: absolute; z-index: -1; left: -52px; bottom: -66px; width: 250px; height: 250px; border-radius: 50%; background: repeating-radial-gradient(circle, rgba(255,255,255,.13) 0 1px, transparent 2px 12px); transform: rotate(-25deg); opacity: .62; }
+    .featured::after { content: ""; position: absolute; z-index: -1; top: -78px; left: -25px; width: 190px; height: 190px; border-radius: 50%; background: #e879f9; filter: blur(40px); opacity: .37; }
+    .featured__top { display: flex; justify-content: space-between; color: #e9ddff; font-size: 12px; }
+    .featured__label { display: inline-flex; align-items: center; gap: 7px; }
+    .featured__label svg { width: 16px; height: 16px; color: #fde68a; }
+    .featured__art { position: absolute; left: 24px; bottom: 22px; width: 130px; height: 130px; border: 8px solid rgba(255,255,255,.12); border-radius: 50%; background: conic-gradient(from 25deg, #e879f9, #f9a8d4, #a78bfa, #60a5fa, #e879f9); box-shadow: 0 18px 30px rgba(0,0,0,.27); }
+    .featured__art::before { content: ""; position: absolute; inset: 27px; border-radius: 50%; background: #211542; border: 3px solid rgba(255,255,255,.26); }
+    .featured__art::after { content: ""; position: absolute; top: 55px; right: 55px; width: 12px; height: 12px; border-radius: 50%; background: #f5d0fe; }
+    .featured__content { position: absolute; right: 26px; bottom: 24px; width: calc(100% - 184px); }
+    .featured h2 { margin: 6px 0 2px; font-size: 24px; letter-spacing: -.7px; }
+    .featured p { margin: 0; color: #d8c7ef; font-size: 13px; }
+    .featured__play { width: 44px; height: 44px; margin-top: 15px; display: grid; place-items: center; border: 0; border-radius: 14px; color: #38154e; background: #f5d0fe; box-shadow: 0 8px 18px rgba(0,0,0,.2); transition: transform .2s; }
+    .featured__play:hover { transform: scale(1.06); }
+    .featured__play svg { width: 20px; height: 20px; margin-right: 2px; }
+
+    .category-row { display: flex; gap: 10px; overflow-x: auto; padding: 16px 0 9px; scrollbar-width: none; }
+    .category-row::-webkit-scrollbar { display: none; }
+    .chip { flex: 0 0 auto; padding: 9px 15px; border: 1px solid var(--line); border-radius: 99px; color: #b5b9c8; background: rgba(255,255,255,.025); font-size: 13px; transition: .2s; }
+    .chip:hover { border-color: rgba(255,255,255,.25); color: var(--text); }
+    .chip.active { border-color: rgba(139,92,246,.65); color: #fff; background: rgba(139,92,246,.25); box-shadow: inset 0 0 0 1px rgba(139,92,246,.14); }
+
+    .section { padding-top: 33px; }
+    .section-head { display: flex; gap: 12px; align-items: end; justify-content: space-between; margin-bottom: 18px; }
+    .section-title { margin: 0; font-size: 21px; letter-spacing: -.7px; }
+    .section-subtitle { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .all-link { display: inline-flex; align-items: center; gap: 4px; color: #bda4ff; font-size: 13px; white-space: nowrap; }
+    .all-link svg { width: 16px; height: 16px; transition: transform .2s; }
+    .all-link:hover svg { transform: translateX(-3px); }
+
+    .albums { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .album { min-width: 0; position: relative; padding: 10px; border: 1px solid transparent; border-radius: 19px; background: transparent; transition: background .24s, transform .24s, border-color .24s; }
+    .album:hover { transform: translateY(-5px); border-color: var(--line); background: rgba(255,255,255,.035); }
+    .album.hidden { display: none; }
+    .album-art { position: relative; aspect-ratio: 1; overflow: hidden; border-radius: 13px; box-shadow: 0 14px 23px rgba(0,0,0,.25); }
+    .album-art::before, .album-art::after { content: ""; position: absolute; }
+    .album-art--violet { background: linear-gradient(130deg, #26114f, #7c3aed 53%, #f0abfc); }
+    .album-art--violet::before { width: 75%; height: 75%; right: -20%; bottom: -25%; border-radius: 50%; border: 20px solid rgba(255,255,255,.23); }
+    .album-art--violet::after { top: 18%; right: 18%; width: 18%; height: 50%; border: 8px solid #fdf4ff; border-bottom: 0; transform: rotate(32deg); opacity: .85; }
+    .album-art--sunset { background: linear-gradient(150deg, #ffb15b 0%, #e74c72 47%, #571c65 100%); }
+    .album-art--sunset::before { left: -8%; bottom: 14%; width: 120%; height: 32%; background: #1e1642; border-radius: 50% 50% 0 0; transform: rotate(-8deg); }
+    .album-art--sunset::after { width: 42%; height: 42%; top: 14%; left: 29%; border-radius: 50%; background: #ffe59d; box-shadow: 0 0 30px #ffe59d; }
+    .album-art--sea { background: linear-gradient(145deg, #042f3f, #0e7490 55%, #6ee7d5); }
+    .album-art--sea::before { inset: 15%; border-radius: 50%; border: 1px solid rgba(255,255,255,.52); box-shadow: 0 0 0 19px rgba(255,255,255,.13), 0 0 0 39px rgba(255,255,255,.1); }
+    .album-art--sea::after { width: 80%; height: 12px; right: -7%; top: 49%; background: rgba(255,255,255,.78); transform: rotate(-30deg); box-shadow: 0 26px 0 rgba(255,255,255,.42), 0 -26px 0 rgba(255,255,255,.35); }
+    .album-art--gold { background: linear-gradient(145deg, #342511, #b45309 49%, #fde68a); }
+    .album-art--gold::before { inset: 17%; border: 6px solid #fff6d4; transform: rotate(45deg); }
+    .album-art--gold::after { width: 38%; height: 38%; top: 31%; right: 31%; border-radius: 50%; background: #4c2706; box-shadow: 0 0 0 7px rgba(255,246,212,.62); }
+    .album-art--blue { background: linear-gradient(145deg, #081f4e, #2563eb 48%, #93c5fd); }
+    .album-art--blue::before { width: 150%; height: 50%; right: -25%; top: 31%; border-radius: 50%; background: #dbeafe; transform: rotate(-21deg); }
+    .album-art--blue::after { width: 45%; height: 45%; top: 27%; left: 25%; border: 2px solid rgba(255,255,255,.6); border-radius: 50%; box-shadow: 0 0 0 16px rgba(255,255,255,.17); }
+    .album-art--rose { background: linear-gradient(145deg, #471530, #be185d 52%, #fbcfe8); }
+    .album-art--rose::before { width: 107%; height: 107%; bottom: -54%; right: -18%; border: 24px solid rgba(255,255,255,.39); border-radius: 50%; }
+    .album-art--rose::after { width: 55%; height: 14%; top: 28%; left: 24%; border-radius: 50%; background: rgba(255,255,255,.78); transform: rotate(-42deg); }
+    .album-art--forest { background: linear-gradient(150deg, #092b23, #15803d 50%, #a7f3d0); }
+    .album-art--forest::before { width: 57%; height: 150%; left: 26%; top: -26%; background: rgba(5,46,22,.72); transform: rotate(36deg); }
+    .album-art--forest::after { width: 38%; height: 38%; left: 13%; bottom: 12%; border-radius: 50%; background: #ecfdf5; box-shadow: 47px -47px 0 rgba(236,253,245,.72); }
+    .album-art--night { background: linear-gradient(145deg, #111827, #334155 58%, #94a3b8); }
+    .album-art--night::before { width: 90%; height: 90%; left: 6%; top: 7%; border: 2px solid rgba(255,255,255,.35); border-radius: 50%; box-shadow: inset 0 0 0 24px rgba(255,255,255,.07); }
+    .album-art--night::after { width: 13px; height: 13px; top: 25%; right: 23%; background: #fff; border-radius: 50%; box-shadow: -46px 27px 0 1px rgba(255,255,255,.75), -15px 64px 0 -1px #fff, 42px 53px 0 -2px #fff; }
+    .album-hover { position: absolute; inset: auto 10px 10px 10px; display: flex; align-items: center; justify-content: space-between; opacity: 0; transform: translateY(8px); transition: .2s; }
+    .album:hover .album-hover, .album:focus-within .album-hover { opacity: 1; transform: translateY(0); }
+    .round-control { width: 38px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 12px; color: #281548; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.3); }
+    .round-control svg { width: 19px; height: 19px; margin-right: 2px; }
+    .download-control { height: 38px; display: inline-flex; gap: 6px; align-items: center; padding: 0 11px; border: 0; border-radius: 12px; color: #fff; background: rgba(12, 15, 30, .76); backdrop-filter: blur(5px); font-size: 11px; }
+    .download-control svg { width: 15px; height: 15px; }
+    .favorite { position: absolute; top: 19px; left: 19px; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; color: #fff; background: rgba(7,9,17,.34); backdrop-filter: blur(7px); opacity: 0; transition: .2s; }
+    .album:hover .favorite, .album:focus-within .favorite { opacity: 1; }
+    .favorite svg { width: 17px; height: 17px; }
+    .favorite.is-favorite { color: #f9a8d4; opacity: 1; }
+    .favorite.is-favorite svg { fill: currentColor; }
+    .album-info { padding: 11px 3px 1px; }
+    .album-name { overflow: hidden; margin: 0; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 700; }
+    .artist { overflow: hidden; margin: 5px 0 0; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+    .meta { display: flex; justify-content: space-between; gap: 6px; margin-top: 8px; color: #858b9e; font-size: 10px; }
+    .license { color: #8fe4d4; }
+    .empty { display: none; grid-column: 1 / -1; padding: 35px 10px; border: 1px dashed var(--line); border-radius: 16px; color: var(--muted); text-align: center; }
+    .empty.show { display: block; }
+
+    .collections { display: grid; grid-template-columns: 1.25fr .75fr; gap: 22px; }
+    .mix-card, .license-card { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--panel); }
+    .mix-card { min-height: 230px; display: grid; grid-template-columns: 1fr 1.05fr; }
+    .mix-art { position: relative; overflow: hidden; background: linear-gradient(135deg, #1e1b4b, #4c1d95 45%, #db2777); }
+    .mix-art::before { content: ""; position: absolute; width: 240px; height: 240px; border-radius: 50%; top: -65px; right: -70px; border: 24px solid rgba(255,255,255,.2); box-shadow: 0 0 0 25px rgba(255,255,255,.13), 0 0 0 49px rgba(255,255,255,.08); }
+    .mix-art::after { content: "♫"; position: absolute; left: 28px; bottom: 12px; color: rgba(255,255,255,.87); font-family: Arial, sans-serif; font-size: 102px; font-weight: bold; transform: rotate(12deg); }
+    .mix-content { padding: 27px; }
+    .small-label { color: #d4c0ff; font-size: 12px; font-weight: 600; }
+    .mix-content h3 { margin: 9px 0 7px; font-size: 22px; letter-spacing: -.8px; }
+    .mix-content p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .mix-bottom { display: flex; align-items: center; gap: 11px; margin-top: 22px; }
+    .play-mix { width: 42px; height: 42px; display: grid; place-items: center; border: 0; border-radius: 13px; color: #2d1550; background: #ddd6fe; }
+    .play-mix svg { width: 19px; height: 19px; margin-right: 2px; }
+    .mix-stats { color: #a8a1bb; font-size: 11px; }
+    .license-card { position: relative; padding: 25px; background: linear-gradient(120deg, rgba(45,212,191,.11), var(--panel) 51%); }
+    .license-card::after { content: "✦"; position: absolute; left: 18px; top: 2px; color: rgba(45,212,191,.33); font-size: 95px; }
+    .license-card h3 { position: relative; margin: 0 0 10px; font-size: 18px; }
+    .license-card p { position: relative; max-width: 310px; margin: 0; color: var(--muted); line-height: 1.95; font-size: 12px; }
+    .license-list { position: relative; display: grid; gap: 10px; margin-top: 18px; }
+    .license-item { display: flex; align-items: center; gap: 8px; color: #d4d7e0; font-size: 12px; }
+    .check { width: 18px; height: 18px; display: grid; flex: 0 0 18px; place-items: center; border-radius: 6px; color: #042f2e; background: var(--aqua); }
+    .check svg { width: 12px; height: 12px; }
+
+    .player { position: fixed; z-index: 30; bottom: 0; right: 0; left: 0; border-top: 1px solid var(--line); background: rgba(13,16,27,.9); backdrop-filter: blur(22px); }
+    .player__inner { min-height: 84px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; }
+    .now-playing { min-width: 0; display: flex; align-items: center; gap: 11px; }
+    .now-art { width: 46px; height: 46px; flex: 0 0 46px; border-radius: 10px; background: linear-gradient(135deg, #26114f, #8b5cf6, #f0abfc); }
+    .now-text { min-width: 0; }
+    .now-title, .now-artist { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .now-title { font-size: 12px; font-weight: 700; }
+    .now-artist { margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .player-controls { display: flex; align-items: center; gap: 12px; }
+    .player-controls button { display: grid; place-items: center; border: 0; color: #c7c9d4; background: transparent; }
+    .player-controls button svg { width: 19px; height: 19px; }
+    .main-play { width: 40px; height: 40px; border-radius: 50%; color: #2d1550 !important; background: #fff !important; }
+    .main-play svg { width: 20px !important; height: 20px !important; margin-right: 2px; }
+    .player-progress { direction: ltr; display: flex; align-items: center; justify-content: flex-end; gap: 9px; color: #a4a9b9; font-size: 10px; }
+    .progress-bar { position: relative; width: min(27vw, 250px); height: 4px; overflow: hidden; border-radius: 5px; background: rgba(255,255,255,.16); }
+    .progress-fill { width: 29%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--purple), var(--pink)); transition: width .6s linear; }
+    .toast { position: fixed; z-index: 45; bottom: 106px; right: 24px; display: flex; gap: 9px; align-items: center; max-width: calc(100% - 48px); padding: 12px 14px; border: 1px solid rgba(45,212,191,.25); border-radius: 13px; color: #d7fff8; background: #123632; box-shadow: var(--shadow); font-size: 12px; opacity: 0; transform: translateY(15px); pointer-events: none; transition: .25s; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast svg { width: 17px; height: 17px; flex: 0 0 auto; color: var(--aqua); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .featured { max-width: 590px; min-height: 270px; }
+      .albums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .collections { grid-template-columns: 1fr; }
+      .license-card { min-height: 190px; }
+    }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .topbar__inner { height: 67px; gap: 14px; }
+      .nav { position: absolute; top: 68px; right: 14px; left: 14px; display: none; flex-direction: column; align-items: stretch; gap: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: #151827; box-shadow: var(--shadow); }
+      .nav.open { display: flex; }
+      .nav a { padding: 13px 16px; border-bottom: 1px solid var(--line); }
+      .nav a:last-child { border-bottom: 0; }
+      .nav .active::after { display: none; }
+      .user { display: none; }
+      .menu-button { display: grid; }
+      .hero { padding-top: 35px; gap: 24px; }
+      h1 { margin-top: 15px; font-size: 32px; }
+      .hero p { font-size: 13px; }
+      .featured { min-height: 258px; padding: 20px; }
+      .featured__art { width: 109px; height: 109px; left: 17px; bottom: 17px; }
+      .featured__art::before { inset: 22px; }
+      .featured__art::after { top: 46px; right: 46px; }
+      .featured__content { right: 20px; bottom: 18px; width: calc(100% - 145px); }
+      .featured h2 { font-size: 20px; }
+      .albums { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .album { padding: 7px; border-radius: 14px; }
+      .album-hover { inset: auto 7px 7px; opacity: 1; transform: none; }
+      .download-control { width: 34px; justify-content: center; padding: 0; }
+      .download-control span { display: none; }
+      .favorite { top: 14px; left: 14px; opacity: 1; }
+      .mix-card { grid-template-columns: .8fr 1.2fr; }
+      .mix-content { padding: 21px; }
+      .player__inner { min-height: 74px; grid-template-columns: 1fr auto; gap: 12px; }
+      .player-progress { display: none; }
+      .now-art { width: 41px; height: 41px; flex-basis: 41px; }
+    }
+    @media (max-width: 390px) {
+      .header-actions .icon-button { display: none; }
+      .hero-note { gap: 8px; font-size: 11px; }
+      .mix-card { grid-template-columns: 1fr; }
+      .mix-art { min-height: 120px; }
+      .mix-art::after { font-size: 74px; }
+      .featured__art { opacity: .75; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar__inner">
+      <a class="brand" href="#top" aria-label="صفحه اصلی نوا">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </span>
+        نوا
+      </a>
+      <nav class="nav" id="mainNav" aria-label="ناوبری اصلی">
+        <a class="active" href="#discover">کشف موسیقی</a>
+        <a href="#collections">مجموعه‌ها</a>
+        <a href="#trending">محبوب‌ترین‌ها</a>
+        <a href="#about">درباره نوا</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="اعلان‌ها">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </button>
+        <div class="user"><span class="avatar">ه</span><span>حساب من</span></div>
+        <button class="menu-button" id="menuToggle" type="button" aria-label="باز کردن منو" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="heroTitle">
+      <div>
+        <span class="eyebrow"><span class="pulse"></span>منتخب این هفته</span>
+        <h1 id="heroTitle">برای هر <strong>لحظه</strong>، صدایی تازه پیدا کن.</h1>
+        <p>در میان موسیقی مستقل از هنرمندان سراسر جهان جست‌وجو کن، گوش بده و آثار دارای مجوز را با خیال راحت به کتابخانه‌ات اضافه کن.</p>
+        <label class="search-wrap" for="musicSearch">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.4 4.4"/></svg>
+          <input id="musicSearch" type="search" placeholder="جست‌وجوی نام آهنگ، هنرمند یا حس‌و‌حال..." autocomplete="off">
+          <kbd class="kbd">Ctrl K</kbd>
+        </label>
+        <div class="hero-note">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>فقط آثار مجاز</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>دانلود باکیفیت</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>حمایت مستقیم از هنرمند</span>
+        </div>
+      </div>
+      <aside class="featured" aria-label="آلبوم برگزیده هفته">
+        <div class="featured__top"><span class="featured__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 1.7 5.3H19l-4.4 3.2 1.7 5.2-4.3-3.1-4.3 3.1 1.7-5.2L5 8.3h5.3z"/></svg> آلبوم برگزیده</span><span>۲۰۲۶</span></div>
+        <div class="featured__art" aria-hidden="true"></div>
+        <div class="featured__content">
+          <p>نئوکلاسیک · ۸ قطعه</p>
+          <h2>روشنای دور</h2>
+          <p>کیانا یزدان‌پناه</p>
+          <button class="featured__play play-track" type="button" data-title="روشنای دور" data-artist="کیانا یزدان‌پناه" data-art="violet" aria-label="پخش روشنای دور">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg>
+          </button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="shell" id="discover" aria-label="دسته‌بندی‌های موسیقی">
+      <div class="category-row" role="toolbar" aria-label="فیلتر ژانر">
+        <button class="chip active" type="button" data-filter="all" aria-pressed="true">همه آثار</button>
+        <button class="chip" type="button" data-filter="electronic" aria-pressed="false">الکترونیک</button>
+        <button class="chip" type="button" data-filter="folk" aria-pressed="false">فولک و جهانی</button>
+        <button class="chip" type="button" data-filter="ambient" aria-pressed="false">امبینت</button>
+        <button class="chip" type="button" data-filter="jazz" aria-pressed="false">جز و سول</button>
+        <button class="chip" type="button" data-filter="classical" aria-pressed="false">کلاسیک</button>
+        <button class="chip" type="button" data-filter="hiphop" aria-pressed="false">هیپ‌هاپ</button>
+      </div>
+    </section>
+
+    <section class="shell section" id="trending" aria-labelledby="trendingTitle">
+      <div class="section-head">
+        <div><h2 class="section-title" id="trendingTitle">در حال شنیده شدن</h2><p class="section-subtitle">انتخابی از آثار تازهٔ دارای مجوز دانلود</p></div>
+        <a class="all-link" href="#discover">نمایش همه <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg></a>
+      </div>
+      <div class="albums" id="albumGrid">
+        <article class="album" data-category="ambient" data-search="روشنای دور کیانا یزدان پناه نئوکلاسیک امبینت">
+          <div class="album-art album-art--violet"><div class="album-hover"><button class="round-control play-track" type="button" data-title="روشنای دور" data-artist="کیانا یزدان‌پناه" data-art="violet" aria-label="پخش روشنای دور"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="روشنای دور"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن روشنای دور به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">روشنای دور</h3><p class="artist">کیانا یزدان‌پناه</p><div class="meta"><span>نئوکلاسیک</span><span class="license">CC BY-NC</span></div></div>
+        </article>
+        <article class="album" data-category="folk" data-search="سفر آفتاب سانا راد فولک جهانی">
+          <div class="album-art album-art--sunset"><div class="album-hover"><button class="round-control play-track" type="button" data-title="سفر آفتاب" data-artist="سانا راد" data-art="sunset" aria-label="پخش سفر آفتاب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="سفر آفتاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن سفر آفتاب به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">سفر آفتاب</h3><p class="artist">سانا راد</p><div class="meta"><span>فولک جهانی</span><span class="license">CC BY</span></div></div>
+        </article>
+        <article class="album" data-category="electronic" data-search="مرز آبی آرکیو الکترونیک سینث ویو">
+          <div class="album-art album-art--sea"><div class="album-hover"><button class="round-control play-track" type="button" data-title="مرز آبی" data-artist="آرکیو" data-art="sea" aria-label="پخش مرز آبی"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="مرز آبی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن مرز آبی به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">مرز آبی</h3><p class="artist">آرکیو</p><div class="meta"><span>سینث‌ویو</span><span class="license">CC BY-SA</span></div></div>
+        </article>
+        <article class="album" data-category="jazz" data-search="شهر بی خواب آرشا میم جز سول">
+          <div class="album-art album-art--gold"><div class="album-hover"><button class="round-control play-track" type="button" data-title="شهر بی‌خواب" data-artist="آرشا میم" data-art="gold" aria-label="پخش شهر بی خواب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="شهر بی‌خواب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن شهر بی خواب به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">شهر بی‌خواب</h3><p class="artist">آرشا میم</p><div class="meta"><span>جز و سول</span><span class="license">CC BY-NC</span></div></div>
+        </article>
+        <article class="album" data-category="hiphop" data-search="بین خطوط دیا هیپ هاپ لوفای">
+          <div class="album-art album-art--blue"><div class="album-hover"><button class="round-control play-track" type="button" data-title="بین خطوط" data-artist="دیا" data-art="blue" aria-label="پخش بین خطوط"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="بین خطوط"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن بین خطوط به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">بین خطوط</h3><p class="artist">دیا</p><div class="meta"><span>لوفای هیپ‌هاپ</span><span class="license">CC BY</span></div></div>
+        </article>
+        <article class="album" data-category="classical" data-search="باغ کاغذی لیلا نویدی کلاسیک پیانو">
+          <div class="album-art album-art--rose"><div class="album-hover"><button class="round-control play-track" type="button" data-title="باغ کاغذی" data-artist="لیلا نویدی" data-art="rose" aria-label="پخش باغ کاغذی"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="باغ کاغذی"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن باغ کاغذی به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">باغ کاغذی</h3><p class="artist">لیلا نویدی</p><div class="meta"><span>پیانو</span><span class="license">CC BY-NC</span></div></div>
+        </article>
+        <article class="album" data-category="folk" data-search="دریچه هامون فولک جهانی آکوستیک">
+          <div class="album-art album-art--forest"><div class="album-hover"><button class="round-control play-track" type="button" data-title="دریچه" data-artist="هامون" data-art="forest" aria-label="پخش دریچه"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="دریچه"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن دریچه به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">دریچه</h3><p class="artist">هامون</p><div class="meta"><span>آکوستیک</span><span class="license">CC0</span></div></div>
+        </article>
+        <article class="album" data-category="ambient" data-search="بعد از باران ایلما امبینت طبیعت">
+          <div class="album-art album-art--night"><div class="album-hover"><button class="round-control play-track" type="button" data-title="بعد از باران" data-artist="ایلما" data-art="night" aria-label="پخش بعد از باران"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button class="download-control download-track" type="button" data-title="بعد از باران"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 19v2h16v-2"/></svg><span>دریافت</span></button></div></div>
+          <button class="favorite" type="button" aria-label="افزودن بعد از باران به علاقه‌مندی‌ها" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20.8 4.7a5.5 5.5 0 0 0-7.8 0L12 5.8l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.9-8.5a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          <div class="album-info"><h3 class="album-name">بعد از باران</h3><p class="artist">ایلما</p><div class="meta"><span>امبینت</span><span class="license">CC BY</span></div></div>
+        </article>
+        <p class="empty" id="emptyState">نتیجه‌ای پیدا نشد. عبارت یا ژانر دیگری را امتحان کنید.</p>
+      </div>
+    </section>
+
+    <section class="shell section" id="collections" aria-labelledby="collectionTitle">
+      <div class="section-head"><div><h2 class="section-title" id="collectionTitle">برای حال‌وهوای تو</h2><p class="section-subtitle">مجموعه‌هایی که با دست انتخاب شده‌اند</p></div></div>
+      <div class="collections">
+        <article class="mix-card">
+          <div class="mix-art" aria-hidden="true"></div>
+          <div class="mix-content"><span class="small-label">پلی‌لیست منتخب</span><h3>شب‌های آرام</h3><p>۲۴ قطعه از امبینت، پیانو و الکترونیک ملایم برای تمرکز و خلوت شبانه.</p><div class="mix-bottom"><button class="play-mix play-track" type="button" data-title="شب‌های آرام" data-artist="پلی‌لیست نوا" data-art="violet" aria-label="پخش پلی لیست شب های آرام"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><span class="mix-stats">۱ ساعت و ۳۸ دقیقه · ۱۸٫۴ هزار شنونده</span></div></div>
+        </article>
+        <aside class="license-card" id="about"><h3>شنیدن خوب، منصفانه است.</h3><p>نوا برای آثار مستقل طراحی شده: هر قطعه نوع مجوز خود را دارد و راه حمایت از سازنده را روشن نشان می‌دهد.</p><div class="license-list"><div class="license-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4L19 6"/></svg></span>شفافیت مجوز هر قطعه</div><div class="license-item"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 4 4L19 6"/></svg></span>پشتیبانی از هنرمند مستقل</div></div></aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="player" aria-label="پخش‌کننده موسیقی">
+    <div class="shell player__inner">
+      <div class="now-playing"><div class="now-art" id="nowArt" aria-hidden="true"></div><div class="now-text"><div class="now-title" id="nowTitle">روشنای دور</div><div class="now-artist" id="nowArtist">کیانا یزدان‌پناه</div></div></div>
+      <div class="player-controls"><button type="button" aria-label="قطعه بعد"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6 6 6-6 6V6Zm7 0v12"/></svg></button><button class="main-play" id="mainPlay" type="button" aria-label="پخش"><svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/></svg></button><button type="button" aria-label="قطعه قبل"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 6 11 12l6 6V6Zm-7 0v12"/></svg></button></div>
+      <div class="player-progress"><span id="currentTime">۰:۴۷</span><div class="progress-bar" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div><span>۳:۲۸</span></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span id="toastText">به صف دریافت افزوده شد.</span></div>
+
+  <script>
+    const $ = (selector, parent = document) => parent.querySelector(selector);
+    const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+    const searchInput = $('#musicSearch');
+    const albums = $$('.album');
+    const emptyState = $('#emptyState');
+    const chips = $$('.chip');
+    const toast = $('#toast');
+    let selectedFilter = 'all';
+    let toastTimer;
+    let isPlaying = false;
+    let progress = 29;
+
+    function normalize(text) {
+      return text.toLowerCase().replace(/[‌\s]+/g, ' ').trim();
+    }
+
+    function updateResults() {
+      const term = normalize(searchInput.value);
+      let visible = 0;
+      albums.forEach((album) => {
+        const inCategory = selectedFilter === 'all' || album.dataset.category === selectedFilter;
+        const inSearch = normalize(album.dataset.search).includes(term);
+        const show = inCategory && inSearch;
+        album.classList.toggle('hidden', !show);
+        if (show) visible += 1;
+      });
+      emptyState.classList.toggle('show', visible === 0);
+    }
+
+    function showToast(message) {
+      $('#toastText').textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2700);
+    }
+
+    function playIcon(playing) {
+      $('#playIcon').innerHTML = playing
+        ? '<path d="M7 5h3v14H7zm7 0h3v14h-3z"/>'
+        : '<path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l9.6-6.8c.6-.4.6-1.2 0-1.6L9.6 4.4C8.9 3.9 8 4.4 8 5.2Z"/>';
+      $('#mainPlay').setAttribute('aria-label', playing ? 'توقف' : 'پخش');
+    }
+
+    function setTrack(button) {
+      $('#nowTitle').textContent = button.dataset.title;
+      $('#nowArtist').textContent = button.dataset.artist;
+      $('#nowArt').className = 'now-art album-art--' + button.dataset.art;
+      isPlaying = true;
+      progress = 5;
+      $('#progressFill').style.width = progress + '%';
+      $('#currentTime').textContent = '۰:۰۸';
+      playIcon(true);
+      showToast('«' + button.dataset.title + '» در حال پخش است.');
+    }
+
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      chips.forEach((item) => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed', 'true');
+      selectedFilter = chip.dataset.filter;
+      updateResults();
+    }));
+
+    searchInput.addEventListener('input', updateResults);
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    });
+    $$('.favorite').forEach((button) => button.addEventListener('click', () => {
+      const saved = button.classList.toggle('is-favorite');
+      button.setAttribute('aria-pressed', String(saved));
+      showToast(saved ? 'به علاقه‌مندی‌ها افزوده شد.' : 'از علاقه‌مندی‌ها حذف شد.');
+    }));
+    $$('.download-track').forEach((button) => button.addEventListener('click', () => {
+      showToast('درخواست دریافت نمونهٔ «' + button.dataset.title + '» ثبت شد.');
+    }));
+    $$('.play-track').forEach((button) => button.addEventListener('click', () => setTrack(button)));
+    $('#mainPlay').addEventListener('click', () => { isPlaying = !isPlaying; playIcon(isPlaying); showToast(isPlaying ? 'پخش ادامه یافت.' : 'پخش متوقف شد.'); });
+    $('#menuToggle').addEventListener('click', () => {
+      const nav = $('#mainNav');
+      const open = nav.classList.toggle('open');
+      $('#menuToggle').setAttribute('aria-expanded', String(open));
+    });
+    setInterval(() => {
+      if (!isPlaying) return;
+      progress = progress >= 100 ? 0 : progress + 0.45;
+      $('#progressFill').style.width = progress + '%';
+      const seconds = Math.floor((progress / 100) * 208);
+      const minute = Math.floor(seconds / 60).toLocaleString('fa-IR');
+      const second = String(seconds % 60).padStart(2, '0').replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      $('#currentTime').textContent = minute + ':' + second;
+    }, 1000);
+  </script>
+</body>
+</html>
