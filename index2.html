@@ -25,14 +25,14 @@
     .cover span{position:relative;z-index:1;font-weight:800;font-size:12px}.song{margin-top:10px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.song h3{margin:0 0 4px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:11px;line-height:1.5}
     .actions{display:flex;gap:6px;margin-top:10px}.actions .btn{padding:7px 10px;border-radius:10px;font-size:11px;flex:1;text-align:center}
     .tag{font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.2);color:#cbbdff}
-    .trend-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:100px}.trend{padding:14px;display:flex;align-items:center;gap:12px}.num{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800;font-size:14px}
+    .trend-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:120px}.trend{padding:14px;display:flex;align-items:center;gap:12px}.num{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800;font-size:14px}
     .player{position:fixed;left:15px;right:15px;bottom:15px;padding:12px 15px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;align-items:center;z-index:30}
     .now{display:flex;align-items:center;gap:10px;overflow:hidden}.art{width:45px;height:45px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--pri),#ff7ad9)}
     .now-info div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px} .range{width:100%;height:4px;cursor:pointer} input[type=range]{accent-color:var(--pri)}
     .ctrls{display:flex;align-items:center;justify-content:center;gap:8px}.pill{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;cursor:pointer;font-size:14px}
     .progress{display:flex;flex-direction:column;gap:5px}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
     @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.trend-row{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.player{grid-template-columns:1fr;gap:8px;bottom:10px;left:10px;right:10px}.trend-row{grid-template-columns:1fr;margin-bottom:160px}.nav{display:none}.topbar{padding:10px}.brand div div:last-child{display:none}}
+    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.player{grid-template-columns:1fr;gap:8px;bottom:10px;left:10px;right:10px}.trend-row{grid-template-columns:1fr;margin-bottom:180px}.nav{display:none}.topbar{padding:10px}.brand div div:last-child{display:none}}
     @media (max-width:480px){.grid{gap:8px}.card{padding:8px}.song h3{font-size:12px}.meta{font-size:10px}.actions .btn{padding:6px 4px;font-size:10px}.hero .big{padding:15px}}
   </style>
 </head>
@@ -53,25 +53,28 @@
     </section>
     <div class="section"><h2>فیلترها</h2><div class="filters"><button class="chip active" onclick="filter('all')">همه</button><button class="chip" onclick="filter('new')">جدید</button><button class="chip" onclick="filter('remix')">ریمیکس</button><button class="chip" onclick="filter('pop')">پاپ</button></div></div>
     <section class="grid" id="songs">
-      <article class="card glass song-item" data-cat="remix" data-title="دیجی علی حبیبی نازدج" data-src="https://drive.google.com/file/d/1Ar8jwTvmFVKCBnUjek1hbqPXbz1wkbiU/view?usp=drive_link">
+      <article class="card glass song-item" data-cat="remix" data-title="دیجی علی حبیبی نازدج">
         <div class="cover"><span>2026</span><span class="tag">320K</span></div>
         <div class="song"><div><h3>دیجی علی - حبیبی نازدج</h3><div class="meta">ریمیکس اختصاصی • 4:15</div></div><div class="tag">ویژه</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('دیجی علی - حبیبی نازدج','ریمیکس')">پخش</button><a href="https://drive.google.com/file/d/1Ar8jwTvmFVKCBnUjek1hbqPXbz1wkbiU/view?usp=drive_link" target="_blank" class="btn">دانلود</a></div>
+        <div class="actions">
+          <button class="btn primary" onclick="playS('دیجی علی - حبیبی نازدج','ریمیکس','https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3')">پخش</button>
+          <a href="https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3" download class="btn">دانلود</a>
+        </div>
       </article>
       <article class="card glass song-item" data-cat="new" data-title="آهنگ احساسی خواننده ب">
         <div class="cover"><span>HOT</span><span class="tag">FLAC</span></div>
         <div class="song"><div><h3>آهنگ احساسی</h3><div class="meta">خواننده ب • 4:02</div></div><div class="tag">جدید</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('آهنگ احساسی','خواننده ب')">پخش</button><button class="btn">دانلود</button></div>
+        <div class="actions"><button class="btn primary" onclick="playS('آهنگ احساسی','خواننده ب','')">پخش</button><button class="btn">دانلود</button></div>
       </article>
       <article class="card glass song-item" data-cat="pop" data-title="آهنگ شاد خواننده ج">
         <div class="cover"><span>TOP</span><span class="tag">128K</span></div>
         <div class="song"><div><h3>آهنگ شاد</h3><div class="meta">خواننده ج • 2:58</div></div><div class="tag">پاپ</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('آهنگ شاد','خواننده ج')">پخش</button><button class="btn">دانلود</button></div>
+        <div class="actions"><button class="btn primary" onclick="playS('آهنگ شاد','خواننده ج','')">پخش</button><button class="btn">دانلود</button></div>
       </article>
       <article class="card glass song-item" data-cat="new" data-title="ریمیکس جدید د">
         <div class="cover"><span>NEW</span><span class="tag">HQ</span></div>
         <div class="song"><div><h3>ریمیکس سال</h3><div class="meta">خواننده د • 3:37</div></div><div class="tag">ریمیکس</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('ریمیکس سال','خواننده د')">پخش</button><button class="btn">دانلود</button></div>
+        <div class="actions"><button class="btn primary" onclick="playS('ریمیکس سال','خواننده د','')">پخش</button><button class="btn">دانلود</button></div>
       </article>
     </section>
     <div class="section"><h2>پرطرفدارها (Trends)</h2></div>
@@ -82,17 +85,22 @@
     </section>
   </div>
   <footer class="player glass">
+    <audio id="mainAudio" style="display:none"></audio>
     <div class="now"><div class="art"></div><div class="now-info"><div id="p-name" style="font-weight:700">آماده پخش</div><div id="p-artist" class="meta">یک آهنگ انتخاب کنید</div></div></div>
-    <div class="ctrls"><button class="pill">⏮</button><button class="pill" style="background:var(--pri);color:#fff">▶</button><button class="pill">⏭</button></div>
-    <div class="progress"><input class="range" type="range" value="20" /><div class="time"><span>00:45</span><span>04:15</span></div></div>
+    <div class="ctrls"><button class="pill">⏮</button><button class="pill" id="playToggle" style="background:var(--pri);color:#fff">▶</button><button class="pill">⏭</button></div>
+    <div class="progress"><input class="range" id="seek" type="range" value="0" min="0" step="1" /><div class="time"><span id="c-time">0:00</span><span id="t-time">0:00</span></div></div>
   </footer>
   <script>
-    const d=document.documentElement,items=[...document.querySelectorAll('.song-item')];
+    const d=document.documentElement,items=[...document.querySelectorAll('.song-item')],audio=document.getElementById('mainAudio'),playBtn=document.getElementById('playToggle'),seek=document.getElementById('seek'),cT=document.getElementById('c-time'),tT=document.getElementById('t-time');
     document.getElementById('themeBtn').onclick=()=>{const t=d.getAttribute('data-theme')==='light'?'dark':'light';d.setAttribute('data-theme',t);localStorage.theme=t}
     if(localStorage.theme)d.setAttribute('data-theme',localStorage.theme);
     document.getElementById('search').oninput=(e)=>{const q=e.target.value.toLowerCase();items.forEach(i=>i.style.display=i.dataset.title.toLowerCase().includes(q)?'':'none')}
     function filter(c){document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');items.forEach(i=>i.style.display=(c==='all'||i.dataset.cat===c)?'':'none')}
-    function playS(n,a){document.getElementById('p-name').innerText=n;document.getElementById('p-artist').innerText=a}
+    function fmt(s){const m=Math.floor(s/60),r=Math.floor(s%60);return `${m}:${r<10?'0':''}${r}`}
+    function playS(n,a,s){if(!s)return;document.getElementById('p-name').innerText=n;document.getElementById('p-artist').innerText=a;audio.src=s;audio.play();playBtn.innerText='⏸'}
+    playBtn.onclick=()=>{if(audio.paused){audio.play();playBtn.innerText='⏸'}else{audio.pause();playBtn.innerText='▶'}}
+    audio.ontimeupdate=()=>{seek.value=audio.currentTime;cT.innerText=fmt(audio.currentTime)};audio.onloadedmetadata=()=>{seek.max=audio.duration;tT.innerText=fmt(audio.duration)}
+    seek.oninput=()=>audio.currentTime=seek.value;audio.onended=()=>playBtn.innerText='▶'
   </script>
 </body>
 </html>
