@@ -1,105 +1,52 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>دانلود آهنگ جدید | Music Download</title>
-  <style>
-    :root{--bg:#0b0f19;--bg2:#11182a;--card:rgba(255,255,255,.06);--card2:rgba(255,255,255,.09);--text:#f4f7ff;--muted:#aab3cc;--line:rgba(255,255,255,.1);--pri:#7c5cff;--pri2:#25d3ff;--good:#1dd1a1;--warn:#ffb84d;--shadow:0 18px 50px rgba(0,0,0,.35);--r:22px}
-    [data-theme="light"]{--bg:#f5f7ff;--bg2:#e9eeff;--card:rgba(255,255,255,.72);--card2:rgba(255,255,255,.9);--text:#151a2a;--muted:#5d667f;--line:rgba(21,26,42,.08);--shadow:0 18px 40px rgba(22,30,55,.12)}
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;height:100%;font-family:tahoma,arial,sans-serif;background:var(--bg) radial-gradient(circle at top,var(--bg2),var(--bg));color:var(--text);overflow-x:hidden}
-    a,button,input{font:inherit;-webkit-tap-highlight-color:transparent;-webkit-focus-ring-color:transparent}
-    button,a{outline:0!important;box-shadow:none!important}
-    button:focus,button:focus-visible,button:active,a:focus,a:focus-visible,a:active,input:focus,input:focus-visible,input:active{outline:0!important;box-shadow:none!important}
-    a{text-decoration:none;color:inherit}.wrap{max-width:1320px;margin:auto;padding:15px}
-    .glass{background:var(--card);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r)}
-    .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 18px;position:sticky;top:10px;z-index:20}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;font-size:18px;box-shadow:0 10px 20px rgba(124,92,255,.3)}
-    .nav{display:flex;gap:8px;flex-wrap:wrap}.nav a,.chip,.btn{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card2);color:var(--text);transition:.2s ease;cursor:pointer;font-size:13px}
-    .nav a:hover,.chip:hover,.btn:hover,.chip.active{transform:translateY(-2px);border-color:var(--pri);background:rgba(124,92,255,.1)}
-    .searchbar{display:flex;gap:10px;align-items:center;margin:15px 0 0;padding:12px}.searchbar input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:15px}.searchbar input::placeholder{color:var(--muted)}
-    .hero{display:grid;grid-template-columns:1.35fr .85fr;gap:15px;margin-top:15px}.hero .big{padding:25px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,rgba(124,92,255,.15),rgba(37,211,255,.1)),var(--card)}
-    .badge{display:inline-flex;width:max-content;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);font-size:12px}
-    h1{margin:10px 0;font-size:clamp(24px,3.5vw,48px);line-height:1.1}.sub{color:var(--muted);max-width:600px;line-height:1.7;font-size:14px}
-    .hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.btn.primary{background:linear-gradient(135deg,var(--pri),var(--pri2));border:0;color:#fff;font-weight:700}
-    .side{padding:15px;display:grid;gap:12px}.mini{padding:12px;border-radius:15px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:13px}
-    .section{display:flex;align-items:center;justify-content:space-between;margin:20px 0 10px;gap:10px}.section h2{margin:0;font-size:18px}.filters{display:flex;gap:8px;flex-wrap:wrap}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{padding:10px;overflow:hidden;position:relative;transition:.3s}.card:hover{border-color:var(--pri)}
-    .cover{aspect-ratio:1;border-radius:15px;background:linear-gradient(135deg,#1e2540,#0f1422);display:flex;align-items:end;justify-content:space-between;padding:10px;position:relative;overflow:hidden}
-    .cover::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(255,255,255,.15),transparent 40%)}
-    .cover span{position:relative;z-index:1;font-weight:800;font-size:12px}.song{margin-top:10px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.song h3{margin:0 0 4px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:11px;line-height:1.5}
-    .actions{display:flex;gap:6px;margin-top:10px}.actions .btn{padding:7px 10px;border-radius:10px;font-size:11px;flex:1;text-align:center}
-    .tag{font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.2);color:#cbbdff}
-    .trend-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:120px}.trend{padding:14px;display:flex;align-items:center;gap:12px}.num{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800;font-size:14px}
-    .player{position:fixed;left:15px;right:15px;bottom:15px;padding:12px 15px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;align-items:center;z-index:30}
-    .now{display:flex;align-items:center;gap:10px;overflow:hidden}.art{width:45px;height:45px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--pri),#ff7ad9)}
-    .now-info div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}.range{width:100%;height:4px;cursor:pointer}input[type=range]{accent-color:var(--pri)}
-    .ctrls{display:flex;align-items:center;justify-content:center;gap:8px}.pill{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;cursor:pointer;font-size:14px}
-    .progress{display:flex;flex-direction:column;gap:5px}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.trend-row{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.player{grid-template-columns:1fr;gap:8px;bottom:10px;left:10px;right:10px}.trend-row{grid-template-columns:1fr;margin-bottom:180px}.nav{display:none}.topbar{padding:10px}.brand div div:last-child{display:none}}
-    @media (max-width:480px){.grid{gap:8px}.card{padding:8px}.song h3{font-size:12px}.meta{font-size:10px}.actions .btn{padding:6px 4px;font-size:10px}.hero .big{padding:15px}}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>جم تو گیم | دانلود موسیقی</title>
+<style>
+:root{--bg:#0b0f19;--bg2:#11182a;--card:rgba(255,255,255,.06);--card2:rgba(255,255,255,.09);--text:#f4f7ff;--muted:#aab3cc;--line:rgba(255,255,255,.1);--pri:#7c5cff;--pri2:#25d3ff;--shadow:0 18px 50px rgba(0,0,0,.35);--r:22px}
+[data-theme=light]{--bg:#f5f7ff;--bg2:#e9eeff;--card:rgba(255,255,255,.72);--card2:rgba(255,255,255,.9);--text:#151a2a;--muted:#5d667f;--line:rgba(21,26,42,.08);--shadow:0 18px 40px rgba(22,30,55,.12)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;font-family:tahoma,arial,sans-serif;background:var(--bg) radial-gradient(circle at top,var(--bg2),var(--bg));color:var(--text);overflow-x:hidden}a,button,input{font:inherit}button,a{outline:0!important;box-shadow:none!important}a{text-decoration:none;color:inherit}.wrap{max-width:1320px;margin:auto;padding:15px}.glass{background:var(--card);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--r)}
+.topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px 18px;position:sticky;top:10px;z-index:20}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--pri),var(--pri2));display:grid;place-items:center;font-size:18px}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav a,.chip,.btn{padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card2);color:var(--text);transition:.2s;cursor:pointer;font-size:13px}.nav a:hover,.chip:hover,.btn:hover,.chip.active{transform:translateY(-2px);border-color:var(--pri);background:rgba(124,92,255,.1)}.searchbar{display:flex;gap:10px;align-items:center;margin:15px 0 0;padding:12px}.searchbar input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font-size:15px}.searchbar input::placeholder{color:var(--muted)}.hero{display:grid;grid-template-columns:1.35fr .85fr;gap:15px;margin-top:15px}.hero .big{padding:25px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(135deg,rgba(124,92,255,.15),rgba(37,211,255,.1)),var(--card)}.badge{display:inline-flex;width:max-content;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);font-size:12px}h1{margin:10px 0;font-size:clamp(24px,3.5vw,48px);line-height:1.1}.sub{color:var(--muted);max-width:600px;line-height:1.7;font-size:14px}.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.btn.primary{background:linear-gradient(135deg,var(--pri),var(--pri2));border:0;color:#fff;font-weight:700}.side{padding:15px;display:grid;gap:12px}.mini{padding:12px;border-radius:15px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:13px}.section{display:flex;align-items:center;justify-content:space-between;margin:20px 0 10px;gap:10px}.section h2{margin:0;font-size:18px}.filters{display:flex;gap:8px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{padding:10px;overflow:hidden;position:relative;transition:.3s}.card:hover{border-color:var(--pri)}.cover{aspect-ratio:1;border-radius:15px;background:linear-gradient(135deg,#1e2540,#0f1422);display:flex;align-items:end;justify-content:space-between;padding:10px;position:relative;overflow:hidden}.cover:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(255,255,255,.15),transparent 40%)}.cover span{position:relative;z-index:1;font-weight:800;font-size:12px}.song{margin-top:10px;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.song h3{margin:0 0 4px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:11px;line-height:1.5}.actions{display:flex;gap:6px;margin-top:10px}.actions .btn{padding:7px 10px;border-radius:10px;font-size:11px;flex:1;text-align:center}.tag{font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.2);color:#cbbdff}.trend-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:120px}.trend{padding:14px;display:flex;align-items:center;gap:12px}.num{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;font-weight:800}.player{position:fixed;left:15px;right:15px;bottom:15px;padding:12px 15px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;align-items:center;z-index:30}.now{display:flex;align-items:center;gap:10px;overflow:hidden}.art{width:45px;height:45px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,var(--pri),#ff7ad9)}.now-info div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}.range{width:100%;height:4px;cursor:pointer}input[type=range]{accent-color:var(--pri)}.ctrls{display:flex;align-items:center;justify-content:center;gap:8px}.pill{width:35px;height:35px;border-radius:50%;border:1px solid var(--line);background:var(--card2);display:grid;place-items:center;cursor:pointer}.progress{display:flex;flex-direction:column;gap:5px}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
+.footer{margin:25px 0 150px;padding:28px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:25px}.footer h3{margin:0 0 12px;color:var(--text)}.footer p,.footer li{color:var(--muted);font-size:13px;line-height:2}.footer ul{list-style:none;margin:0;padding:0}.support{color:#fff!important;font-size:18px!important;font-weight:800;direction:ltr;text-align:right}.copyright{grid-column:1/-1;border-top:1px solid var(--line);padding-top:15px;color:var(--muted);font-size:11px;text-align:center}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100}.modal{width:min(520px,100%);padding:25px;text-align:center;background:var(--card2);border:2px solid #e53935;border-radius:22px;box-shadow:0 20px 70px rgba(0,0,0,.55)}.modal h2{margin:0 0 15px;color:#ff4d4d}.modal p{color:var(--text);line-height:2;font-size:14px;margin:0 0 20px}.close-modal{background:#e53935!important;border:0!important;color:#fff!important;min-width:120px;font-weight:700}.hidden{display:none!important}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.trend-row{grid-template-columns:repeat(2,1fr)}}@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.player{grid-template-columns:1fr;gap:8px;bottom:10px;left:10px;right:10px}.trend-row{grid-template-columns:1fr;margin-bottom:180px}.nav{display:none}.topbar{padding:10px}.brand div div:last-child{display:none}.footer{grid-template-columns:1fr;margin-bottom:180px}}@media(max-width:480px){.grid{gap:8px}.card{padding:8px}.song h3{font-size:12px}.meta{font-size:10px}.actions .btn{padding:6px 4px;font-size:10px}.hero .big{padding:15px}}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="topbar glass">
-      <div class="brand"><div class="logo">♪</div><div><div style="font-size:15px">MusicHub</div><div style="font-size:11px;color:var(--muted)">مرجع دانلود موسیقی</div></div></div>
-      <nav class="nav"><a href="#">اصلی</a><a href="#">جدید</a><a href="#">برتر</a><a href="#">آلبوم</a><a href="#">لیست</a></nav>
-      <button class="btn" id="themeBtn">🌓</button>
-    </header>
-    <div class="searchbar glass"><input id="search" type="text" placeholder="جستجوی آهنگ، خواننده..." /><button class="btn primary">بگرد</button></div>
-    <section class="hero">
-      <div class="big glass">
-        <div><div class="badge">💎 کیفیت Hi-Res • دانلود رایگان</div><h1>مرجع هوشمند موسیقی</h1><p class="sub">دسترسی سریع به جدیدترین ریمیکس‌ها و آهنگ‌های روز با رابط کاربری شیشه‌ای مدرن.</p></div>
-        <div class="hero-actions"><button class="btn primary">دانلود ویژه</button><button class="btn">برترین‌ها</button></div>
-      </div>
-      <aside class="side glass"><div class="mini"><strong>پشتیبانی</strong><div class="meta">MP3, FLAC, WAV</div></div><div class="mini"><strong>وضعیت سرور</strong><div class="meta">آنلاین - پرسرعت</div></div></aside>
-    </section>
-    <div class="section"><h2>فیلترها</h2><div class="filters"><button class="chip active" onclick="filter('all')">همه</button><button class="chip" onclick="filter('new')">جدید</button><button class="chip" onclick="filter('remix')">ریمیکس</button><button class="chip" onclick="filter('pop')">پاپ</button></div></div>
-    <section class="grid" id="songs">
-      <article class="card glass song-item" data-cat="remix" data-title="دیجی علی حبیبی نازدج">
-        <div class="cover"><span>2026</span><span class="tag">320K</span></div>
-        <div class="song"><div><h3>دیجی علی - حبیبی نازدج</h3><div class="meta">ریمیکس اختصاصی • 4:15</div></div><div class="tag">ویژه</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('دیجی علی - حبیبی نازدج','ریمیکس','https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3', this)">پخش</button><a href="https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3" download class="btn">دانلود</a></div>
-      </article>
-      <article class="card glass song-item" data-cat="new" data-title="آهنگ احساسی">
-        <div class="cover"><span>HOT</span><span class="tag">FLAC</span></div>
-        <div class="song"><div><h3>آهنگ احساسی</h3><div class="meta">4:02</div></div><div class="tag">جدید</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('آهنگ احساسی','','Ghotbe%20Shomal~GuitarMusics.com.mp3', this)">پخش</button><a href="Ghotbe%20Shomal~GuitarMusics.com.mp3" download class="btn">دانلود</a></div>
-      </article>
-      <article class="card glass song-item" data-cat="pop" data-title="آهنگ شاد">
-        <div class="cover"><span>TOP</span><span class="tag">128K</span></div>
-        <div class="song"><div><h3>آهنگ شاد</h3><div class="meta">2:58</div></div><div class="tag">پاپ</div></div>
-        <div class="actions"><button class="btn primary" onclick="playS('آهنگ شاد','','B%C9%99ri%20Bax%20-%20Damla%20%28320%29%20%281%29.mp3', this)">پخش</button><a href="B%C9%99ri%20Bax%20-%20Damla%20%28320%29%20%281%29.mp3" download class="btn">دانلود</a></div>
-      </article>
-    </section>
-    <div class="section"><h2>پرطرفدارها (Trends)</h2></div>
-    <section class="trend-row">
-      <div class="trend glass"><div class="num">1</div><div><strong>حبیبی نازدج</strong><div class="meta">دیجی علی</div></div></div>
-      <div class="trend glass"><div class="num">2</div><div><strong>آهنگ برتر هفته</strong><div class="meta">خواننده تراز اول</div></div></div>
-      <div class="trend glass"><div class="num">3</div><div><strong>ریمیکس کلاب</strong><div class="meta">دیجی نمونه</div></div></div>
-    </section>
-  </div>
-  <footer class="player glass">
-    <audio id="mainAudio" style="display:none"></audio>
-    <div class="now"><div class="art"></div><div class="now-info"><div id="p-name" style="font-weight:700">آماده پخش</div><div id="p-artist" class="meta">یک آهنگ انتخاب کنید</div></div></div>
-    <div class="ctrls"><button class="pill" onclick="skip(-1)">⏮</button><button class="pill" id="playToggle" style="background:var(--pri);color:#fff">▶</button><button class="pill" onclick="skip(1)">⏭</button></div>
-    <div class="progress"><input class="range" id="seek" type="range" value="0" min="0" step="1" /><div class="time"><span id="c-time">0:00</span><span id="t-time">0:00</span></div></div>
-  </footer>
-  <script>
-    const d=document.documentElement,audio=document.getElementById('mainAudio'),playBtn=document.getElementById('playToggle'),seek=document.getElementById('seek'),cT=document.getElementById('c-time'),tT=document.getElementById('t-time');
-    let curIdx = -1;
-    function getVis() { return [...document.querySelectorAll('.song-item')].filter(i=>i.style.display!=='none') }
-    document.getElementById('themeBtn').onclick=()=>{const t=d.getAttribute('data-theme')==='light'?'dark':'light';d.setAttribute('data-theme',t);localStorage.theme=t}
-    if(localStorage.theme)d.setAttribute('data-theme',localStorage.theme);
-    document.getElementById('search').oninput=(e)=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.song-item').forEach(i=>i.style.display=i.dataset.title.toLowerCase().includes(q)?'':'none')}
-    function filter(c){document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.song-item').forEach(i=>i.style.display=(c==='all'||i.dataset.cat===c)?'':'none')}
-    function fmt(s){const m=Math.floor(s/60),r=Math.floor(s%60);return `${m}:${r<10?'0':''}${r}`}
-    function playS(n,a,s,btn){audio.src=s;audio.play();document.getElementById('p-name').innerText=n;document.getElementById('p-artist').innerText=a;playBtn.innerText='⏸';document.querySelectorAll('.song-item .btn.primary').forEach(b=>b.innerText='پخش');btn.innerText='⏸';curIdx=getVis().indexOf(btn.closest('.song-item'))}
-    function skip(d){const list=getVis();if(list.length===0)return;curIdx=(curIdx+d+list.length)%list.length;list[curIdx].querySelector('.btn.primary').click()}
-    playBtn.onclick=()=>{if(audio.paused){audio.play();playBtn.innerText='⏸'}else{audio.pause();playBtn.innerText='▶'}}
-    audio.ontimeupdate=()=>{seek.value=audio.currentTime;cT.innerText=fmt(audio.currentTime)};audio.onloadedmetadata=()=>{seek.max=audio.duration;tT.innerText=fmt(audio.duration)}
-    seek.oninput=()=>audio.currentTime=seek.value;audio.onended=()=>playBtn.innerText='▶'
-  </script>
+<div id="noticeModal" class="modal-bg">
+<div class="modal">
+<h2>اطلاعیه مهم</h2>
+<p>لطفاً برای دریافت خدمات و پیگیری درخواست‌ها، فقط از راه‌های ارتباطی رسمی جم تو گیم استفاده کنید.</p>
+<button class="btn close-modal" onclick="closeNotice()">بستن اطلاعیه</button>
+</div>
+</div>
+<div class="wrap">
+<header class="topbar glass">
+<div class="brand"><div class="logo">💎</div><div><div style="font-size:15px">جم تو گیم</div><div style="font-size:11px;color:var(--muted)">مرجع دانلود موسیقی و خدمات گیم</div></div></div>
+<nav class="nav"><a href="#">اصلی</a><a href="#songs">جدید</a><a href="#trends">برتر</a><a href="#footer">تماس با ما</a></nav>
+<button class="btn" id="themeBtn">🌓</button>
+</header>
+<div class="searchbar glass"><input id="search" type="text" placeholder="جستجوی آهنگ، خواننده..."><button class="btn primary">بگرد</button></div>
+<section class="hero">
+<div class="big glass"><div><div class="badge">💎 کیفیت Hi-Res • دانلود رایگان</div><h1>مرجع هوشمند موسیقی</h1><p class="sub">دسترسی سریع به جدیدترین ریمیکس‌ها و آهنگ‌های روز با رابط کاربری شیشه‌ای مدرن.</p></div><div class="hero-actions"><button class="btn primary">دانلود ویژه</button><button class="btn">برترین‌ها</button></div></div>
+<aside class="side glass"><div class="mini"><strong>پشتیبانی</strong><div class="meta">شماره پشتیبانی: 09200975770</div></div><div class="mini"><strong>وضعیت سرور</strong><div class="meta">آنلاین - پرسرعت</div></div></aside>
+</section>
+<div class="section"><h2>فیلترها</h2><div class="filters"><button class="chip active" onclick="filterSongs('all',this)">همه</button><button class="chip" onclick="filterSongs('new',this)">جدید</button><button class="chip" onclick="filterSongs('remix',this)">ریمیکس</button><button class="chip" onclick="filterSongs('pop',this)">پاپ</button></div></div>
+<section class="grid" id="songs">
+<article class="card glass song-item" data-cat="remix" data-title="دیجی علی حبیبی نازدج"><div class="cover"><span>2026</span><span class="tag">320K</span></div><div class="song"><div><h3>دیجی علی - حبیبی نازدج</h3><div class="meta">ریمیکس اختصاصی • 4:15</div></div><div class="tag">ویژه</div></div><div class="actions"><button class="btn primary" onclick="playS('دیجی علی - حبیبی نازدج','ریمیکس','https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3',this)">پخش</button><a href="https://raw.githubusercontent.com/alibolooki27-ship-it/sbx202/main/dj%20ali%20allah%20allah%20ya%20hoby%20nazdej.mp3" download class="btn">دانلود</a></div></article>
+<article class="card glass song-item" data-cat="new" data-title="آهنگ احساسی"><div class="cover"><span>HOT</span><span class="tag">FLAC</span></div><div class="song"><div><h3>آهنگ احساسی</h3><div class="meta">4:02</div></div><div class="tag">جدید</div></div><div class="actions"><button class="btn primary" onclick="playS('آهنگ احساسی','','Ghotbe%20Shomal~GuitarMusics.com.mp3',this)">پخش</button><a href="Ghotbe%20Shomal~GuitarMusics.com.mp3" download class="btn">دانلود</a></div></article>
+<article class="card glass song-item" data-cat="pop" data-title="آهنگ شاد"><div class="cover"><span>TOP</span><span class="tag">128K</span></div><div class="song"><div><h3>آهنگ شاد</h3><div class="meta">2:58</div></div><div class="tag">پاپ</div></div><div class="actions"><button class="btn primary" onclick="playS('آهنگ شاد','','B%C9%99ri%20Bax%20-%20Damla%20%28320%29%20%281%29.mp3',this)">پخش</button><a href="B%C9%99ri%20Bax%20-%20Damla%20%28320%29%20%281%29.mp3" download class="btn">دانلود</a></div></article>
+</section>
+<div class="section" id="trends"><h2>پرطرفدارها</h2></div><section class="trend-row"><div class="trend glass"><div class="num">1</div><div><strong>حبیبی نازدج</strong><div class="meta">ریمیکس ویژه</div></div></div><div class="trend glass"><div class="num">2</div><div><strong>آهنگ برتر هفته</strong><div class="meta">جدیدترین آثار</div></div></div><div class="trend glass"><div class="num">3</div><div><strong>ریمیکس کلاب</strong><div class="meta">موسیقی منتخب</div></div></div></section>
+<footer class="footer glass" id="footer"><div><h3>جم تو گیم</h3><p>مرجع دانلود موسیقی و ارائه خدمات دیجیتال با محیطی سریع، ساده و کاربرپسند.</p></div><div><h3>تماس با ما</h3><ul><li>پشتیبانی و پاسخ‌گویی</li><li class="support">09200975770</li></ul></div><div><h3>اطلاعات سایت</h3><ul><li>دانلود آهنگ‌های جدید</li><li>ریمیکس و موسیقی منتخب</li><li>پشتیبانی همه‌روزه</li></ul></div><div class="copyright">تمامی حقوق برای جم تو گیم محفوظ است.</div></footer>
+</div>
+<footer class="player glass"><audio id="mainAudio"></audio><div class="now"><div class="art"></div><div class="now-info"><div id="p-name" style="font-weight:700">آماده پخش</div><div id="p-artist" class="meta">یک آهنگ انتخاب کنید</div></div></div><div class="ctrls"><button class="pill" onclick="skip(-1)">⏮</button><button class="pill" id="playToggle" style="background:var(--pri);color:#fff">▶</button><button class="pill" onclick="skip(1)">⏭</button></div><div class="progress"><input class="range" id="seek" type="range" value="0" min="0" step="1"><div class="time"><span id="c-time">0:00</span><span id="t-time">0:00</span></div></div></footer>
+<script>
+const d=document.documentElement,audio=document.getElementById('mainAudio'),playBtn=document.getElementById('playToggle'),seek=document.getElementById('seek'),cT=document.getElementById('c-time'),tT=document.getElementById('t-time');let curIdx=-1;
+function closeNotice(){document.getElementById('noticeModal').classList.add('hidden');sessionStorage.noticeClosed='1'}if(sessionStorage.noticeClosed)closeNotice();
+function getVis(){return[...document.querySelectorAll('.song-item')].filter(i=>i.style.display!=='none')}document.getElementById('themeBtn').onclick=()=>{const t=d.getAttribute('data-theme')==='light'?'dark':'light';d.setAttribute('data-theme',t);localStorage.theme=t};if(localStorage.theme)d.setAttribute('data-theme',localStorage.theme);
+document.getElementById('search').oninput=e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.song-item').forEach(i=>i.style.display=i.dataset.title.toLowerCase().includes(q)?'':'none')};function filterSongs(c,b){document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.song-item').forEach(i=>i.style.display=c==='all'||i.dataset.cat===c?'':'none')}
+function fmt(s){const m=Math.floor(s/60),r=Math.floor(s%60);return`${m}:${r<10?'0':''}${r}`}function playS(n,a,s,b){audio.src=s;audio.play();document.getElementById('p-name').innerText=n;document.getElementById('p-artist').innerText=a;playBtn.innerText='⏸';document.querySelectorAll('.song-item .btn.primary').forEach(x=>x.innerText='پخش');b.innerText='⏸';curIdx=getVis().indexOf(b.closest('.song-item'))}function skip(x){const l=getVis();if(l.length){curIdx=(curIdx+x+l.length)%l.length;l[curIdx].querySelector('.btn.primary').click()}}playBtn.onclick=()=>{if(audio.paused){audio.play();playBtn.innerText='⏸'}else{audio.pause();playBtn.innerText='▶'}};audio.ontimeupdate=()=>{seek.value=audio.currentTime;cT.innerText=fmt(audio.currentTime)};audio.onloadedmetadata=()=>{seek.max=audio.duration;tT.innerText=fmt(audio.duration)};seek.oninput=()=>audio.currentTime=seek.value;audio.onended=()=>playBtn.innerText='▶';
+</script>
 </body>
 </html>
